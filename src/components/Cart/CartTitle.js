@@ -2,14 +2,16 @@ import React from 'react';
 import { classNames } from 'utils';
 import styled from 'styled-components/macro';
 import { ReactComponent as SvgIconCart } from 'assets/icons/cart.svg';
+import { useCartP } from 'context/CartContext';
 
 /* -------------------------------------------------------------------------- */
 
-function _CartTitle({ as: Comp, className, children, ...restProps }) {
+function _CartTitle({ as: Comp, className,  ...restProps }) {
+  const { carts } = useCartP(); 
   return (
     <Comp className={classNames('cartTitle', className)} {...restProps}>
       <SvgIconCart />
-      {children}
+      {carts.title}
     </Comp>
   );
 }
